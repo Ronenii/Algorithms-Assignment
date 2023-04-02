@@ -1,6 +1,6 @@
 #include "Vertex.h"
 
-void vertex::add_neighbor(vertex& i_neighbor)
+void vertex::add_neighbor(vertex & i_neighbor)
 {
 	if (!neighbor_exists(i_neighbor))
 	{

@@ -1,5 +1,6 @@
 #pragma once
-#include "Graph.h"
+#include "Directed Graph.h"
+#include "Non Directed Graph.h"
 #include "Exceptions.h"
 
 class io_manager

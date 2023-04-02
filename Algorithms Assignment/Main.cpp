@@ -1,5 +1,4 @@
-#include "Directed Graph.h"
-#include "Non Directed Graph.h"
+#include "IO Manager.h"
 
 void main()
 {

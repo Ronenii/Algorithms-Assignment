@@ -140,13 +140,17 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Directed Graph.h" />
+    <ClInclude Include="Exceptions.h" />
     <ClInclude Include="Graph.h" />
+    <ClInclude Include="IO Manager.h" />
     <ClInclude Include="Non Directed Graph.h" />
     <ClInclude Include="Vertex.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Directed Graph.cpp" />
+    <ClCompile Include="Exceptions.cpp" />
     <ClCompile Include="Graph.cpp" />
+    <ClCompile Include="IO Manager.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Non Directed Graph.cpp" />
     <ClCompile Include="Vertex.cpp" />

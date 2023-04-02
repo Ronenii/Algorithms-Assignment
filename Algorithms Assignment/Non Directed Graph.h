@@ -2,7 +2,7 @@
 
 #include "Graph.h"
 
-class non_directed_graph
+class non_directed_graph: public  graph
 {
 private:
 public:

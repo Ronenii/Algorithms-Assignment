@@ -1,7 +1,7 @@
 #pragma once
 
-#include  "list"
-#include "vector"
+#include  <list>
+#include <vector>
 
 class vertex
 {

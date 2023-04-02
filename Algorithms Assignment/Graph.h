@@ -16,6 +16,8 @@ public:
 	virtual int get_num_of_edges() const { return m_num_of_edges; }
 	virtual void set_num_of_vertexes(const int i_num_of_vertexes) {m_num_of_vertexes = i_num_of_vertexes;}
 	virtual void set_num_of_edges(const int i_num_of_edges) { m_num_of_edges = i_num_of_edges; }
+	virtual vertex& get_vertex_by_value(int i_value) { return m_vertexes[i_value - 1]; }
+
 	virtual void set_edge(vertex& i_src, vertex& i_dst) = 0;
 
 private:

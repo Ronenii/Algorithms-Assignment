@@ -38,7 +38,6 @@ void io_manager::get_directed_graph_input(directed_graph & i_dg)
 	for(int i = 0; i < i_dg.get_num_of_edges(); i++)
 	{
 		cin >> v1 >> v2;
-		;
 		i_dg.set_edge(i_dg.get_vertex_by_value(v1), i_dg.get_vertex_by_value(v2));
 	}
 }

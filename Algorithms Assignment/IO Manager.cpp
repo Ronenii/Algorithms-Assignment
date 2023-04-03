@@ -1,24 +1,5 @@
 #include "IO Manager.h"
 
-graph* io_manager::get_user_input()
-{
-	int vertices, edges;
-
-	const bool is_directed = get_is_graph_directed();
-	cin >> vertices >> edges;
-
-	if (is_directed)
-	{
-		directed_graph* dg = new directed_graph(vertices, edges);
-		return dg;
-	}
-	else
-	{
-		non_directed_graph* ndg = new non_directed_graph(vertices, edges);
-		return ndg;
-	}
-}
-
 bool io_manager::get_is_graph_directed()
 {
 	char input;
@@ -31,14 +12,31 @@ bool io_manager::get_is_graph_directed()
 	return true;
 }
 
-void io_manager::get_directed_graph_input(directed_graph & i_dg)
+graph & io_manager::get_user_input()
 {
-	int v1, v2;
+	int vertices, edges;
 
-	for(int i = 0; i < i_dg.get_num_of_edges(); i++)
+	const bool is_directed = get_is_graph_directed();
+	cin >> vertices >> edges;
+
+	if(is_directed)
 	{
-		cin >> v1 >> v2;
-		i_dg.set_edge(i_dg.get_vertex_by_value(v1), i_dg.get_vertex_by_value(v2));
+		directed_graph dg(vertices, edges);
+		return dg;
+	}
+	else
+	{
+		non_directed_graph ndg(vertices, edges);
+		return ndg;
 	}
 }
 
+directed_graph io_manager::get_directed_graph_input()
+{
+	
+}
+
+void io_manager::get_non_directed_graph_input(non_directed_graph & ret_ndg)
+{
+	
+}

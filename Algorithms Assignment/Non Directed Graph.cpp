@@ -14,7 +14,7 @@ bool non_directed_graph::is_graph_conected()
 		return false;
 
 	set_all_white();
-	visit(get_vertex_by_value(0));
+	visit(get_vertex_by_value(1));
 	if (is_all_black())
 		return false;
 	return true;

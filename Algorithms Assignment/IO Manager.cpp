@@ -36,6 +36,7 @@ graph * io_manager::get_user_input()
 void io_manager::get_graph_input(graph* i_graph)
 {
 	int src_value, dst_value;
+
 	for (int i = 0; i < i_graph->get_num_of_edges(); i++)
 	{
 		cin >> src_value >> dst_value;

@@ -49,19 +49,3 @@ bool graph::is_vertex_exists(vertex& i_vertex) const
 
 	return false;
 }
-
-bool graph::dfs()
-{
-	for (auto& v : m_vertexes)
-	{
-		v.set_color(Color::WHITE);
-	}
-
-	for (auto& v : m_vertexes)
-	{
-		if (v.get_color() == Color::WHITE)
-		{
-			visit(v);
-		}
-	}
-}

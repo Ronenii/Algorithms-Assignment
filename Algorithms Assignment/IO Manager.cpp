@@ -31,18 +31,13 @@ bool io_manager::get_is_graph_directed()
 	return true;
 }
 
-void io_manager::get_directed_graph_input(directed_graph & i_dg)
+void io_manager::get_graph_input(graph * i_graph)
 {
 	int v1, v2;
 
-	for(int i = 0; i < i_dg.get_num_of_edges(); i++)
+	for(int i = 0; i < i_graph->get_num_of_edges(); i++)
 	{
 		cin >> v1 >> v2;
-		i_dg.set_edge(i_dg.get_vertex_by_value(v1), i_dg.get_vertex_by_value(v2));
+		i_graph->set_edge(i_graph->get_vertex_by_value(v1), i_graph->get_vertex_by_value(v2));
 	}
-}
-
-directed_graph io_manager::get_directed_graph_input()
-{
-	
 }

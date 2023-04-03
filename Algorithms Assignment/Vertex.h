@@ -8,6 +8,7 @@ using namespace std;
 class vertex
 {
 private:
+	int m_in_degree = 0, m_out_degree = 0, m_degree = 0;
 	int m_value;
 	list<vertex> m_neighbors;
 public:

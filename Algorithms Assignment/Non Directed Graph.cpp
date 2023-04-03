@@ -13,9 +13,11 @@ bool non_directed_graph::is_graph_conected()
 	if (!is_even_degrees())
 		return false;
 
-		
-	
-	
+	set_all_white();
+	visit(get_vertex_by_value(0));
+	if (is_all_black())
+		return false;
+	return true;
 }
 
 bool non_directed_graph::is_even_degrees()

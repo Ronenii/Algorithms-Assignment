@@ -14,6 +14,16 @@ void graph::set_all_white()
 		vertex.set_color(Color::WHITE);
 }
 
+bool graph::is_all_black()
+{
+	for (auto& vertex : m_vertexes)
+	{
+		if (vertex.get_color() != Color::BLACK)
+			return false;
+	}
+	return true;
+}
+
 void graph::visit(vertex i_vertex)
 {
 	i_vertex.set_color(Color::GRAY);

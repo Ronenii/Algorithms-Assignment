@@ -8,6 +8,7 @@ class graph
 private:
 	vector<vertex> m_vertexes;
 	int m_num_of_vertexes, m_num_of_edges;
+	bool is_vertex_exists(vertex& i_vertex) const;
 public:
 	graph(int i_num_of_vertexes, int i_num_of_edges);
 	virtual ~graph() = default;
@@ -20,6 +21,6 @@ public:
 
 	virtual void set_edge(vertex& i_src, vertex& i_dst) = 0;
 
-private:
-	bool is_vertex_exists(vertex& i_vertex) const;
+
+	
 };

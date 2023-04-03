@@ -11,7 +11,7 @@ private:
 	int m_value;
 	list<vertex> m_neighbors;
 public:
-	vertex(int i_value) { m_value = i_value; }
+	vertex(int i_value = 0) { m_value = i_value; }
 	void add_neighbor(vertex& i_neighbor);
 	bool neighbor_exists(const vertex& i_neighbor) const;
 	int get_value()const { return m_value; }

@@ -25,6 +25,9 @@ public:
 protected:
 	virtual bool is_graph_conected();
 	void visit(vertex& i_vertex);
+	void set_all_white();
+	bool is_all_black();
+	void visit(vertex i_vertex);
 
 
 

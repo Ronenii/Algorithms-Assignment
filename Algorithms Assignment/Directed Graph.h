@@ -7,5 +7,5 @@ class directed_graph: public graph
 public:
 	directed_graph(int i_num_of_vertexes, int i_num_of_edges) :graph(i_num_of_vertexes, i_num_of_edges) {}
 	virtual void set_edge(vertex& i_src, vertex& i_dst) override;
-
+	virtual bool is_graph_conected() const override;
 };

@@ -8,6 +8,12 @@ graph::graph(int i_num_of_vertexes, int i_num_of_edges) : m_num_of_vertexes(i_nu
 	}
 }
 
+void graph::set_all_white()
+{
+	for (auto& vertex : m_vertexes)
+		vertex.set_color(Color::WHITE);
+}
+
 void graph::visit(vertex i_vertex)
 {
 	i_vertex.set_color(Color::GRAY);

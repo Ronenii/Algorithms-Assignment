@@ -18,4 +18,6 @@ public:
 	int get_value()const { return m_value; }
 	void set_value(int i_value) { m_value = i_value; }
 	bool operator==(const vertex& i_other)const { return i_other.m_value == m_value; }
+	void set_degree(int i_degree) { m_degree = i_degree; }
+	int get_degree() const { return m_degree; }
 };

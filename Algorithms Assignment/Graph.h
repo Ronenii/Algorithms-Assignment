@@ -21,7 +21,7 @@ public:
 	virtual void set_edge(vertex& i_src, vertex& i_dst) = 0;
 
 protected:
-	virtual bool is_graph_conected() const;
+	virtual bool is_graph_conected();
 
 
 	

@@ -8,7 +8,7 @@ class io_manager
 private:
 
 public:
-	 static bool get_is_graph_directed();
-	 static graph * get_user_input();
-	 static void get_directed_graph_input(directed_graph& dg);
+	 bool get_is_graph_directed();
+	 graph* get_user_input();
+	 void get_graph_input(graph* i_graph);
 };

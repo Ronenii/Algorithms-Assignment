@@ -19,17 +19,42 @@ graph* io_manager::get_user_input()
 	}
 }
 
+void io_manager::get_char_input(char& input)
+{
+	cin >> input;
+	if (input != 'n' || input != 'y')
+		throw invalid_input_exception();
+}
+
+void io_manager::get_edge_input(int& src, int& dst, int num_of_vertexes)
+{
+	cin >> src >> dst;
+	if (!(src > 0 && src < num_of_vertexes) || !(dst > 0 && dst < num_of_vertexes))
+		throw invalid_edge_input_exception();
+}
+
 bool io_manager::get_is_graph_directed()
 {
 	char input;
-
 	cout << "Is the graph directed : y / n " << endl;
-	cin >> input;
+	while(true)
+	{
+		try
+		{
+			get_char_input(input);
+			if(input == 'n') return false;
 
-	if (input == 'n') return false;
-
-	return true;
+			return true;
+		}
+		catch (const invalid_input_exception& e)
+		{
+			cout << "Exception thrown: " << e.what() << endl;
+		}
+	}
+	
 }
+
+
 
 void io_manager::get_directed_graph_input(directed_graph & i_dg)
 {
@@ -37,8 +62,18 @@ void io_manager::get_directed_graph_input(directed_graph & i_dg)
 
 	for(int i = 0; i < i_dg.get_num_of_edges(); i++)
 	{
-		cin >> v1 >> v2;
-		i_dg.set_edge(i_dg.get_vertex_by_value(v1), i_dg.get_vertex_by_value(v2));
+		try
+		{
+			get_edge_input(v1, v2, i_dg.get_num_of_vertexes());
+			i_dg.set_edge(i_dg.get_vertex_by_value(v1), i_dg.get_vertex_by_value(v2));
+		}
+		catch (const invalid_edge_input_exception& e)
+		{
+			cout << "Exception thrown: " << e.what() << endl;
+			i--;
+		}
+		
+		
 	}
 }
 

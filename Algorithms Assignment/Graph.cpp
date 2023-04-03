@@ -18,4 +18,10 @@ bool graph::is_vertex_exists(vertex& i_vertex) const
 	return false;
 }
 
-
+void graph::DFS()
+{
+	for (auto & v : m_vertexes)
+	{
+		v.set
+	}
+}

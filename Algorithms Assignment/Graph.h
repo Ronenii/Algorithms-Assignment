@@ -11,8 +11,8 @@ protected:
 
 public:
 	graph(int i_num_of_vertexes, int i_num_of_edges);
-	bool is_vertex_exists(vertex& i_vertex) const;
 	virtual ~graph() = default;
+	bool is_vertex_exists(vertex& i_vertex) const;
 	virtual vector<vertex> get_vertexes() const { return m_vertexes; }
 	virtual int get_num_of_vertexes() const { return m_num_of_vertexes; }
 	virtual int get_num_of_edges() const { return m_num_of_edges; }

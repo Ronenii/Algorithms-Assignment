@@ -10,5 +10,6 @@ public:
 	virtual bool is_graph_connected() override;
 	bool is_grpah_strongly_connected();
 	directed_graph & get_transposed();
-
+	virtual bool is_euler() override;
+	bool all_degrees_equal();
 };

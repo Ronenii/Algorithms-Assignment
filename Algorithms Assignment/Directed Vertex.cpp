@@ -1,1 +1,0 @@
-#include "Directed vertex.h"

@@ -12,3 +12,37 @@ bool directed_graph::is_graph_connected()
 	return false; // placeholder
 }
 
+bool directed_graph::is_grpah_strongly_connected()
+{
+	set_all_white();
+    visit(get_vertex_by_value(1));
+
+	if(is_all_black())
+	{
+		directed_graph dg_transposed = get_transposed();
+		visit(dg_transposed.get_vertex_by_value(1));
+		if(dg_transposed.is_all_black())
+		{
+			return true;
+		}
+	}
+	return false;
+}
+
+directed_graph & directed_graph::get_transposed()
+{
+	directed_graph * transposed = new directed_graph(m_num_of_vertexes, m_num_of_edges);
+	vertex src;
+	vertex dst;
+    for(auto v: m_vertexes)
+	{
+		dst = v;
+		for(auto neighbor: v.get_neighbors())
+		{
+			src = neighbor;
+			transposed->set_edge(src,dst);
+		}
+	}
+
+	return *transposed;
+}

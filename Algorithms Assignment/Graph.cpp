@@ -27,12 +27,12 @@ bool graph::is_all_black()
 void graph::visit(vertex& i_vertex)
 {
 	i_vertex.set_color(Color::GRAY);
-	list<vertex>& neighbors = i_vertex.get_neighbors();
+	list<vertex*>& neighbors = i_vertex.get_neighbors();
 	for (auto& neighbor : neighbors)
 	{
-		if (neighbor.get_color() == Color::WHITE)
+		if (neighbor->get_color() == Color::WHITE)
 		{
-			visit(neighbor);
+			visit(*neighbor);
 		}
 	}
 
@@ -43,9 +43,9 @@ bool graph::is_unsused_edge(vertex& i_current_vertex, vertex& i_white_neighbor)
 {
 	for (auto& neighbor : i_current_vertex.get_neighbors())
 	{
-		if (neighbor.get_color() == Color::WHITE)
+		if (neighbor->get_color() == Color::WHITE)
 		{
-			i_white_neighbor = neighbor;
+			i_white_neighbor = *neighbor;
 			return true;
 		}
 	}
@@ -54,6 +54,7 @@ bool graph::is_unsused_edge(vertex& i_current_vertex, vertex& i_white_neighbor)
 
 list<vertex>& graph::get_euler_circuit()
 {
+	set_all_white();
 	vector<vertex> circuit = find_circuit(get_vertex_by_value(1));
 	vector<vertex> temp_circuit;
 	vertex current_vertex;
@@ -88,7 +89,7 @@ bool graph::has_usused_egde(vertex& i_vertex)
 {
 	for (auto& neighbor : i_vertex.get_neighbors())
 	{
-		if (neighbor.get_color() == Color::WHITE)
+		if (neighbor->get_color() == Color::WHITE)
 		{
 			return true;
 		}
@@ -100,13 +101,14 @@ bool graph::has_usused_egde(vertex& i_vertex)
 vector<vertex> graph::find_circuit(vertex& i_vertex)
 {
 	vector<vertex> circuit;
-	vertex current_vertex = i_vertex, white_neighbor;
+	vertex& current_vertex = i_vertex, *white_neighbor = nullptr;
 	circuit.push_back(i_vertex);
-	while (is_unsused_edge(current_vertex, white_neighbor))
+	current_vertex.set_color(Color::GRAY);
+	while (is_unsused_edge(current_vertex, *white_neighbor))
 	{
-		white_neighbor.set_color(Color::GRAY);
-		circuit.push_back(white_neighbor);
-		current_vertex = white_neighbor;
+		white_neighbor->set_color(Color::GRAY);
+		circuit.push_back(*white_neighbor);
+		current_vertex = *white_neighbor;
 	}
 	return circuit;
 }

@@ -36,7 +36,7 @@ directed_graph & directed_graph::get_transposed()
 		dst = v;
 		for(auto neighbor: v.get_neighbors())
 		{
-			src = neighbor;
+			src = *neighbor;
 			transposed->set_edge(src,dst);
 		}
 	}

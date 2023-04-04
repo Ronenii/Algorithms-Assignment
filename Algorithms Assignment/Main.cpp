@@ -2,5 +2,5 @@
 
 void main()
 {
-
+	io_manager::run_program();
 }

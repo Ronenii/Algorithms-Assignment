@@ -8,12 +8,13 @@ void io_manager::run_program()
 	get_graph_input(input_graph);
 	if(input_graph->is_euler())
 	{
+		cout << "The graph is aulerian" << endl;
 		euler_circuit = input_graph->get_euler_circuit();
-		// print graph
+		print_euler_circuit(euler_circuit);
 	}
 	else
 	{
-		cout << "Graph is not eulerian" << endl;
+		cout << "Graph is not aulerian" << endl;
 	}
 	// free allocation.
 
@@ -51,14 +52,14 @@ graph* io_manager::get_user_input()
 void io_manager::get_char_input(char& input)
 {
 	cin >> input;
-	if (input != 'n' || input != 'y')
+	if (input != 'n' && input != 'y')
 		throw invalid_input_exception();
 }
 
 void io_manager::get_edge_input(int& src, int& dst, int num_of_vertexes)
 {
 	cin >> src >> dst;
-	if (!(src > 0 && src < num_of_vertexes) || !(dst > 0 && dst < num_of_vertexes))
+	if (!(src > 0 && src <= num_of_vertexes) || !(dst > 0 && dst <= num_of_vertexes))
 		throw invalid_edge_input_exception();
 }
 
@@ -67,6 +68,17 @@ void io_manager::get_vertexes_and_edges_input(int& vertexes, int& edges)
 	cin >> vertexes >> edges;
 	if (!(vertexes > 0) || !(edges >= 0))
 		throw invalid_input_exception();
+}
+
+void io_manager::print_euler_circuit(list<vertex>& i_euler_circuit)
+{
+	cout << '(';
+	for (auto& vertex : i_euler_circuit)
+	{
+		cout << vertex.get_value() << ',';
+	}
+	cout << ')' << endl;
+	
 }
 
 bool io_manager::get_is_graph_directed()
@@ -107,3 +119,5 @@ void io_manager::get_graph_input(graph * i_graph)
 		}
 	}
 }
+
+

@@ -29,6 +29,8 @@ public:
 	list<vertex>& get_euler_circuit();
 	bool has_usused_egde(vertex& i_vertex);
 	void paste_circuit(vector<vertex>& i_dst, vector<vertex>& i_src, int i_start_index);
+	void change_edeges_to_used(vertex& i_current_vertex, vertex& neighbor);
+	virtual bool is_directed() = 0;
 
 
 	

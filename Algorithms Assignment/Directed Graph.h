@@ -11,4 +11,5 @@ public:
 	directed_graph & get_transposed();
 	virtual bool is_euler() override;
 	bool all_degrees_equal();
+	virtual bool is_directed();
 };

@@ -30,4 +30,9 @@ bool non_directed_graph::is_even_degrees()
 	return true;
 }
 
+bool non_directed_graph::is_directed()
+{
+	return false;
+}
+
 

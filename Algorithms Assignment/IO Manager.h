@@ -8,7 +8,10 @@ class io_manager
 private:
 
 public:
-	 bool get_is_graph_directed();
-	 graph* get_user_input();
-	 void get_graph_input(graph* i_graph);
+	bool get_is_graph_directed();
+	graph* get_user_input();
+	void get_graph_input(graph* i_graph);
+	void get_char_input(char& input);
+	void get_edge_input(int& src, int& dst, int num_of_vertexes);
+
 };

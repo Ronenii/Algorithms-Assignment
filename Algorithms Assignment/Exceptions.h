@@ -3,14 +3,30 @@
 #include <string>
 using namespace std;
 
-class someException
+class invalid_input_exception
 {
 	string message;
 
 public:
-	someException(const string& input)
+	invalid_input_exception()
 	{
-		message = "\"" + input + "\" does not exist, please try again.";
+		message = "invalid input, please try again.";
+	}
+
+	char const* what()const
+	{
+		return message.c_str();
+	}
+};
+
+class invalid_edge_input_exception
+{
+	string message;
+
+public:
+	invalid_edge_input_exception()
+	{
+		message = "can not create the edge, please try again.";
 	}
 
 	char const* what()const

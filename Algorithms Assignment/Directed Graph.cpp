@@ -7,15 +7,19 @@ void directed_graph::set_edge(vertex& i_src, vertex& i_dst)
 	i_dst.set_in_degree(i_dst.get_in_degree() + 1);
 }
 
-bool directed_graph::is_grpah_strongly_connected()
+
+
+bool directed_graph::is_graph_strongly_connected()
 {
 	set_all_white();
-    visit(get_vertex_by_value(1));
 
-	if(is_all_black())
+	directed_graph dummyGraph = *this;
+    visit(dummyGraph.get_vertex_by_ref(1));
+
+	if(dummyGraph.is_all_black())
 	{
 		directed_graph dg_transposed = get_transposed();
-		visit(dg_transposed.get_vertex_by_value(1));
+		visit(dg_transposed.get_vertex_by_ref(1));
 		if(dg_transposed.is_all_black())
 		{
 			return true;
@@ -30,11 +34,13 @@ directed_graph & directed_graph::get_transposed()
 	directed_graph * transposed = new directed_graph(m_num_of_vertexes, m_num_of_edges);
 	vertex src;
 	vertex dst;
+	list<vertex> neighbors;
 
     for(auto v: m_vertexes)
 	{
 		dst = v;
-		for(auto neighbor: v.get_neighbors())
+		neighbors = v.get_neighbors();
+		for(auto neighbor: neighbors)
 		{
 			src = neighbor;
 			transposed->set_edge(src,dst);
@@ -46,7 +52,7 @@ directed_graph & directed_graph::get_transposed()
 
 bool directed_graph::is_euler()
 {
-    return is_grpah_strongly_connected() && all_degrees_equal();
+    return is_graph_strongly_connected() && all_degrees_equal();
 }
 
 bool directed_graph::all_degrees_equal()

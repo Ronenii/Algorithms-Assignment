@@ -3,6 +3,7 @@ using namespace std;
 #include "Vertex.h"
 #include <iostream>
 
+
 class graph
 {
 protected:
@@ -18,18 +19,21 @@ public:
 	virtual int get_num_of_edges() const { return m_num_of_edges; }
 	virtual void set_num_of_vertexes(const int i_num_of_vertexes) { m_num_of_vertexes = i_num_of_vertexes; }
 	virtual void set_num_of_edges(const int i_num_of_edges) { m_num_of_edges = i_num_of_edges; }
-	virtual vertex& get_vertex_by_value(int i_value) { return m_vertexes[i_value - 1]; }
+	virtual vertex& get_vertex_by_ref(int i_value) { return m_vertexes[i_value - 1]; }
+	virtual vertex get_vertex_by_val(int i_value) { return m_vertexes[i_value - 1]; }
 	virtual void set_edge(vertex& i_src, vertex& i_dst) = 0;
 	void visit(vertex& i_vertex);
+	void mark_edge(vertex& i_curr_vertex, vertex& i_next_vertex);
+	list<vertex> find_circuit(vertex& i_start);
 	void set_all_white();
 	bool is_all_black();
-	vector<vertex> find_circuit(vertex& i_vertex);
-	bool is_unsused_edge(vertex& i_current_vertex, vertex& i_white_neighbor);
+	//vector<vertex> find_circuit(vertex& i_vertex);
+	//bool is_unsused_edge(vertex& i_current_vertex, vertex& i_white_neighbor);
 	virtual bool is_euler() = 0;
-	list<vertex>& get_euler_circuit();
-	bool has_usused_egde(vertex& i_vertex);
+	//list<vertex>& get_euler_circuit();
+	//bool has_usused_egde(vertex& i_vertex);
 	void paste_circuit(vector<vertex>& i_dst, vector<vertex>& i_src, int i_start_index);
-	void change_edeges_to_used(vertex& i_current_vertex, vertex& neighbor);
+	//void change_edeges_to_used(vertex& i_current_vertex, vertex& neighbor);
 	virtual bool is_directed() = 0;
 
 

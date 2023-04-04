@@ -8,9 +8,9 @@ public:
 	directed_graph(int i_num_of_vertexes, int i_num_of_edges) :graph(i_num_of_vertexes, i_num_of_edges) {}
 	~directed_graph() = default;
 	virtual void set_edge(vertex& i_src, vertex& i_dst) override;
-	bool is_grpah_strongly_connected();
+	bool is_graph_strongly_connected();
 	directed_graph & get_transposed();
 	virtual bool is_euler() override;
 	bool all_degrees_equal();
-	virtual bool is_directed();
+	virtual bool is_directed() override;
 };

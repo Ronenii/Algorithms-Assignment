@@ -110,7 +110,7 @@ void io_manager::get_graph_input(graph * i_graph)
 		try
 		{
 			get_edge_input(v1, v2, i_graph->get_num_of_vertexes());
-			i_graph->set_edge(i_graph->get_vertex_by_value(v1), i_graph->get_vertex_by_value(v2));
+			i_graph->set_edge(i_graph->get_vertex_by_ref(v1), i_graph->get_vertex_by_ref(v2));
 		}
 		catch (const invalid_edge_input_exception& e)
 		{

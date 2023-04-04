@@ -24,70 +24,70 @@ bool graph::is_all_black()
 	return true;
 }
 
-void graph::visit(vertex& i_vertex)
-{
-	i_vertex.set_color(Color::GRAY);
-	list<vertex>& neighbors = i_vertex.get_neighbors();
-	for (auto& neighbor : neighbors)
-	{
-		vertex& real_current_neighbor = m_vertexes[neighbor.get_value() - 1];
-		if (real_current_neighbor.get_color() == Color::WHITE)
-		{
-			visit(real_current_neighbor);
-		}
-	}
-
-	i_vertex.set_color(Color::BLACK);
-}
-
-bool graph::is_unsused_edge(vertex& i_current_vertex, vertex& i_next_neighbor)
-{
-	for (auto& neighbor : i_current_vertex.get_neighbors())
-	{
-		if (neighbor.get_color() == Color::WHITE)
-		{
-			neighbor.set_color(Color::GRAY);
-			i_next_neighbor = m_vertexes[neighbor.get_value() - 1];
-			// in case the graph is non directed
-			change_edeges_to_used(i_current_vertex,i_next_neighbor);
-			return true;
-		}
-	}
-	return false;
-}
-
-void graph::change_edeges_to_used(vertex& i_current_vertex, vertex& neighbor)
-{
-	if (!is_directed())
-	{
-		for(auto& vertex : neighbor.get_neighbors())
-		{
-			if (vertex.get_value() == i_current_vertex.get_value())
-			{
-				vertex.set_color(Color::GRAY);
-			}
-		}
-	}
-}
-
-list<vertex>& graph::get_euler_circuit()
-{
-	set_all_white();
-	vector<vertex> circuit = find_circuit(get_vertex_by_value(1));
-	vector<vertex> temp_circuit;
-	vertex current_vertex;
-	for (int i = 0; i < circuit.size(); i++)
-	{
-		if (has_usused_egde(circuit[i]))
-		{
-			current_vertex = circuit[i];
-			temp_circuit = find_circuit(current_vertex);
-			paste_circuit(circuit, temp_circuit, i);
-		}
-	}
-	list<vertex>* ret = new list<vertex>(circuit.begin(), circuit.end());
-	return *ret;
-}
+//void graph::visit(vertex& i_vertex)
+//{
+//	i_vertex.set_color(Color::GRAY);
+//	list<vertex>& neighbors = i_vertex.get_neighbors();
+//	for (auto& neighbor : neighbors)
+//	{
+//		vertex& real_current_neighbor = m_vertexes[neighbor.get_value() - 1];
+//		if (real_current_neighbor.get_color() == Color::WHITE)
+//		{
+//			visit(real_current_neighbor);
+//		}
+//	}
+//
+//	i_vertex.set_color(Color::BLACK);
+//}
+//
+//bool graph::is_unsused_edge(vertex& i_current_vertex, vertex& i_next_neighbor)
+//{
+//	for (auto& neighbor : i_current_vertex.get_neighbors())
+//	{
+//		if (neighbor.get_color() == Color::WHITE)
+//		{
+//			neighbor.set_color(Color::GRAY);
+//			i_next_neighbor = m_vertexes[neighbor.get_value() - 1];
+//			// in case the graph is non directed
+//			change_edeges_to_used(i_current_vertex,i_next_neighbor);
+//			return true;
+//		}
+//	}
+//	return false;
+//}
+//
+//void graph::change_edeges_to_used(vertex& i_current_vertex, vertex& neighbor)
+//{
+//	if (!is_directed())
+//	{
+//		for(auto& vertex : neighbor.get_neighbors())
+//		{
+//			if (vertex.get_value() == i_current_vertex.get_value())
+//			{
+//				vertex.set_color(Color::GRAY);
+//			}
+//		}
+//	}
+//}
+//
+//list<vertex>& graph::get_euler_circuit()
+//{
+//	set_all_white();
+//	vector<vertex> circuit = find_circuit(get_vertex_by_ref(1));
+//	vector<vertex> temp_circuit;
+//	vertex current_vertex;
+//	for (int i = 0; i < circuit.size(); i++)
+//	{
+//		if (has_usused_egde(circuit[i]))
+//		{
+//			current_vertex = circuit[i];
+//			temp_circuit = find_circuit(current_vertex);
+//			paste_circuit(circuit, temp_circuit, i);
+//		}
+//	}
+//	list<vertex>* ret = new list<vertex>(circuit.begin(), circuit.end());
+//	return *ret;
+//}
 
 void graph::paste_circuit(vector<vertex>& i_dst, vector<vertex>& i_src, int i_start_index)
 {
@@ -103,32 +103,32 @@ void graph::paste_circuit(vector<vertex>& i_dst, vector<vertex>& i_src, int i_st
 	}
 }
 
-bool graph::has_usused_egde(vertex& i_vertex)
-{
-	for (auto& neighbor : i_vertex.get_neighbors())
-	{
-		if (neighbor.get_color() == Color::WHITE)
-		{
-			return true;
-		}
-	}
-	return false;
-}
+//bool graph::has_usused_egde(vertex& i_vertex)
+//{
+//	for (auto& neighbor : i_vertex.get_neighbors())
+//	{
+//		if (neighbor.get_color() == Color::WHITE)
+//		{
+//			return true;
+//		}
+//	}
+//	return false;
+//}
 
 
-vector<vertex> graph::find_circuit(vertex& i_vertex)
-{
-	vector<vertex> circuit;
-	vertex& current_vertex = i_vertex, next_vertex;
-	circuit.push_back(i_vertex);
-	current_vertex.set_color(Color::GRAY);
-	while (is_unsused_edge(current_vertex, next_vertex))
-	{
-		circuit.push_back(next_vertex);
-		current_vertex = next_vertex;
-	}
-	return circuit;
-}
+//vector<vertex> graph::find_circuit(vertex& i_vertex)
+//{
+//	vector<vertex> circuit;
+//	vertex& current_vertex = i_vertex, next_vertex;
+//	circuit.push_back(i_vertex);
+//	current_vertex.set_color(Color::GRAY);
+//	while (is_unsused_edge(current_vertex, next_vertex))
+//	{
+//		circuit.push_back(next_vertex);
+//		current_vertex = next_vertex;
+//	}
+//	return circuit;
+//}
 
 bool graph::is_vertex_exists(vertex& i_vertex) const
 {
@@ -140,3 +140,43 @@ bool graph::is_vertex_exists(vertex& i_vertex) const
 
 	return false;
 }
+
+void graph::visit(vertex& i_vertex)
+{
+	i_vertex.set_color(Color::GRAY);
+	list<vertex> neighbors = i_vertex.get_neighbors();
+	for(auto& neighbor: neighbors)
+	{
+		if(neighbor.get_color() == Color::WHITE)
+		{
+			mark_edge(i_vertex, neighbor);
+			visit(neighbor);
+		}
+	}
+	i_vertex.set_color(Color::BLACK);
+}
+
+void graph::mark_edge(vertex & i_curr_vertex, vertex & i_next_vertex)
+{
+	i_curr_vertex.remove_neighbor(i_next_vertex);
+}
+
+
+vector<vertex*> graph::find_circuit(vertex &i_start)
+{
+	vertex* curr = &i_start;
+	vector<vertex*> circuit;
+	circuit.push_back(&i_start);
+	vertex * neighbor = &i_start.get_neighbors_by_ref();
+
+	while(curr->has_neighbors())
+	{
+		neighbor = ; //Get front of neighbor.
+		mark_edge(*curr, neighbor);
+		circuit.push_back(neighbor);
+		curr = neighbor;
+	}
+
+	return circuit;
+}
+

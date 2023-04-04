@@ -14,7 +14,7 @@ bool non_directed_graph::is_euler()
 		return false;
 
 	set_all_white();
-	visit(get_vertex_by_value(1));
+	visit(get_vertex_by_ref(1));
 	if (is_all_black())
 		return true;
 	return false;

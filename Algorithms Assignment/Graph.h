@@ -24,4 +24,11 @@ public:
 	void visit(vertex& i_vertex);
 	void set_all_white();
 	bool is_all_black();
+	void visit(vertex i_vertex);
+	list<vertex> find_circuit(vertex& i_vertex);
+	bool is_unsused_edge(vertex& i_current_vertex, vertex& i_white_neighbor);
+
+
+
+	
 };

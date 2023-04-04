@@ -48,3 +48,21 @@ directed_graph & directed_graph::get_transposed()
 
 	return *transposed;
 }
+
+bool directed_graph::is_euler()
+{
+    return is_grpah_strongly_connected() && all_degrees_equal();
+}
+
+bool directed_graph::all_degrees_equal()
+{
+    for(auto & v: m_vertexes)
+	{
+		if (v.get_in_degree() != v.get_out_degree())
+		{
+			return false;
+		}
+	}
+
+	return true;
+}

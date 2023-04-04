@@ -5,17 +5,26 @@ graph* io_manager::get_user_input()
 	int vertices, edges;
 
 	const bool is_directed = get_is_graph_directed();
-	cin >> vertices >> edges;
-
-	if (is_directed)
+	while(true)
 	{
-		directed_graph* dg = new directed_graph(vertices, edges);
-		return dg;
-	}
-	else
-	{
-		non_directed_graph* ndg = new non_directed_graph(vertices, edges);
-		return ndg;
+		try
+		{
+			get_vertexes_and_edges_input(vertices, edges);
+			if (is_directed)
+			{
+				directed_graph* dg = new directed_graph(vertices, edges);
+				return dg;
+			}
+			else
+			{
+				non_directed_graph* ndg = new non_directed_graph(vertices, edges);
+				return ndg;
+			}
+		}
+		catch (const invalid_input_exception& e)
+		{
+			cout << "Exception thrown: " << e.what() << endl;
+		}
 	}
 }
 
@@ -31,6 +40,13 @@ void io_manager::get_edge_input(int& src, int& dst, int num_of_vertexes)
 	cin >> src >> dst;
 	if (!(src > 0 && src < num_of_vertexes) || !(dst > 0 && dst < num_of_vertexes))
 		throw invalid_edge_input_exception();
+}
+
+void io_manager::get_vertexes_and_edges_input(int& vertexes, int& edges)
+{
+	cin >> vertexes >> edges;
+	if (!(vertexes > 0) || !(edges >= 0))
+		throw invalid_input_exception();
 }
 
 bool io_manager::get_is_graph_directed()
@@ -62,20 +78,13 @@ void io_manager::get_graph_input(graph * i_graph)
 	{
 		try
 		{
-			get_edge_input(v1, v2, i_dg.get_num_of_vertexes());
-			i_dg.set_edge(i_dg.get_vertex_by_value(v1), i_dg.get_vertex_by_value(v2));
+			get_edge_input(v1, v2, i_graph->get_num_of_vertexes());
+			i_graph->set_edge(i_graph->get_vertex_by_value(v1), i_graph->get_vertex_by_value(v2));
 		}
 		catch (const invalid_edge_input_exception& e)
 		{
 			cout << "Exception thrown: " << e.what() << endl;
 			i--;
 		}
-		
-		
 	}
-}
-
-directed_graph io_manager::get_directed_graph_input()
-{
-	
 }

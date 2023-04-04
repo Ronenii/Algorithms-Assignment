@@ -26,6 +26,7 @@ bool directed_graph::is_grpah_strongly_connected()
 			return true;
 		}
 	}
+	
 	return false;
 }
 
@@ -34,6 +35,7 @@ directed_graph & directed_graph::get_transposed()
 	directed_graph * transposed = new directed_graph(m_num_of_vertexes, m_num_of_edges);
 	vertex src;
 	vertex dst;
+
     for(auto v: m_vertexes)
 	{
 		dst = v;

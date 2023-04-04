@@ -30,9 +30,10 @@ void graph::visit(vertex& i_vertex)
 	list<vertex>& neighbors = i_vertex.get_neighbors();
 	for (auto& neighbor : neighbors)
 	{
-		if (neighbor.get_color() == Color::WHITE)
+		vertex& real_current_neighbor = m_vertexes[neighbor.get_value() - 1];
+		if (real_current_neighbor.get_color() == Color::WHITE)
 		{
-			visit(neighbor);
+			visit(real_current_neighbor);
 		}
 	}
 

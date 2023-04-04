@@ -7,11 +7,6 @@ void directed_graph::set_edge(vertex& i_src, vertex& i_dst)
 	i_dst.set_in_degree(i_dst.get_in_degree() + 1);
 }
 
-bool directed_graph::is_graph_connected()
-{
-	return false; // placeholder
-}
-
 bool directed_graph::is_grpah_strongly_connected()
 {
 	set_all_white();

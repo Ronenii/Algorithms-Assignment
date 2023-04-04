@@ -8,7 +8,7 @@ void non_directed_graph::set_edge(vertex& i_src, vertex& i_dst)
 	i_dst.set_degree(i_dst.get_degree() + 1);
 }
 
-bool non_directed_graph::is_graph_connected()
+bool non_directed_graph::is_euler()
 {
 	if (!is_even_degrees())
 		return false;
@@ -16,14 +16,13 @@ bool non_directed_graph::is_graph_connected()
 	set_all_white();
 	visit(get_vertex_by_value(1));
 	if (is_all_black())
-		return false;
-	return true;
+		return true;
+	return false;
 }
 
 bool non_directed_graph::is_even_degrees()
 {
-	vector<vertex> vertexes = get_vertexes();
-	for (auto& vertex : vertexes)
+	for (auto& vertex : m_vertexes)
 	{
 		if (vertex.get_degree() % 2 != 0)
 			return false;

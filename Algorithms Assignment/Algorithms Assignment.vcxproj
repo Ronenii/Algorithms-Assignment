@@ -148,7 +148,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Directed Graph.cpp" />
-    <ClCompile Include="Exceptions.cpp" />
     <ClCompile Include="Graph.cpp" />
     <ClCompile Include="IO Manager.cpp" />
     <ClCompile Include="Main.cpp" />

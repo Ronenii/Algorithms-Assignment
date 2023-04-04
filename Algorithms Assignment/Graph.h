@@ -20,14 +20,15 @@ public:
 	virtual void set_num_of_edges(const int i_num_of_edges) { m_num_of_edges = i_num_of_edges; }
 	virtual vertex& get_vertex_by_value(int i_value) { return m_vertexes[i_value - 1]; }
 	virtual void set_edge(vertex& i_src, vertex& i_dst) = 0;
-	virtual bool is_graph_connected() = 0;
 	void visit(vertex& i_vertex);
 	void set_all_white();
 	bool is_all_black();
-	list<vertex> find_circuit(vertex& i_vertex);
+	vector<vertex> find_circuit(vertex& i_vertex);
 	bool is_unsused_edge(vertex& i_current_vertex, vertex& i_white_neighbor);
 	virtual bool is_euler() = 0;
-
+	list<vertex>& get_euler_circuit();
+	bool has_usused_egde(vertex& i_vertex);
+	void paste_circuit(vector<vertex>& i_dst, vector<vertex>& i_src, int i_start_index);
 
 
 	

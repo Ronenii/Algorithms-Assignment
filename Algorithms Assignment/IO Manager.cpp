@@ -1,5 +1,25 @@
 #include "IO Manager.h"
 
+void io_manager::run_program()
+{
+	list<vertex> euler_circuit;
+	graph* input_graph;
+	input_graph = get_user_input();
+	get_graph_input(input_graph);
+	if(input_graph->is_euler())
+	{
+		euler_circuit = input_graph->get_euler_circuit();
+		// print graph
+	}
+	else
+	{
+		cout << "Graph is not eulerian" << endl;
+	}
+	// free allocation.
+
+}
+
+
 graph* io_manager::get_user_input()
 {
 	int vertices, edges;
@@ -67,7 +87,6 @@ bool io_manager::get_is_graph_directed()
 			cout << "Exception thrown: " << e.what() << endl;
 		}
 	}
-	
 }
 
 void io_manager::get_graph_input(graph * i_graph)

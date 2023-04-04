@@ -10,4 +10,5 @@ public:
 	virtual void set_edge(vertex& i_src, vertex& i_dst) override;
 	virtual bool is_euler() override;
 	bool is_even_degrees();
+	virtual bool is_directed();
 };

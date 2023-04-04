@@ -27,29 +27,46 @@ bool graph::is_all_black()
 void graph::visit(vertex& i_vertex)
 {
 	i_vertex.set_color(Color::GRAY);
-	list<vertex*>& neighbors = i_vertex.get_neighbors();
+	list<vertex>& neighbors = i_vertex.get_neighbors();
 	for (auto& neighbor : neighbors)
 	{
-		if (neighbor->get_color() == Color::WHITE)
+		if (neighbor.get_color() == Color::WHITE)
 		{
-			visit(*neighbor);
+			visit(neighbor);
 		}
 	}
 
 	i_vertex.set_color(Color::BLACK);
 }
 
-bool graph::is_unsused_edge(vertex& i_current_vertex, vertex& i_white_neighbor)
+bool graph::is_unsused_edge(vertex& i_current_vertex, vertex& i_next_neighbor)
 {
 	for (auto& neighbor : i_current_vertex.get_neighbors())
 	{
-		if (neighbor->get_color() == Color::WHITE)
+		if (neighbor.get_color() == Color::WHITE)
 		{
-			i_white_neighbor = *neighbor;
+			neighbor.set_color(Color::GRAY);
+			i_next_neighbor = m_vertexes[neighbor.get_value() - 1];
+			// in case the graph is non directed
+			change_edeges_to_used(i_current_vertex,i_next_neighbor);
 			return true;
 		}
 	}
 	return false;
+}
+
+void graph::change_edeges_to_used(vertex& i_current_vertex, vertex& neighbor)
+{
+	if (!is_directed())
+	{
+		for(auto& vertex : neighbor.get_neighbors())
+		{
+			if (vertex.get_value() == i_current_vertex.get_value())
+			{
+				vertex.set_color(Color::GRAY);
+			}
+		}
+	}
 }
 
 list<vertex>& graph::get_euler_circuit()
@@ -89,7 +106,7 @@ bool graph::has_usused_egde(vertex& i_vertex)
 {
 	for (auto& neighbor : i_vertex.get_neighbors())
 	{
-		if (neighbor->get_color() == Color::WHITE)
+		if (neighbor.get_color() == Color::WHITE)
 		{
 			return true;
 		}
@@ -101,14 +118,13 @@ bool graph::has_usused_egde(vertex& i_vertex)
 vector<vertex> graph::find_circuit(vertex& i_vertex)
 {
 	vector<vertex> circuit;
-	vertex& current_vertex = i_vertex, *white_neighbor = nullptr;
+	vertex& current_vertex = i_vertex, next_vertex;
 	circuit.push_back(i_vertex);
 	current_vertex.set_color(Color::GRAY);
-	while (is_unsused_edge(current_vertex, *white_neighbor))
+	while (is_unsused_edge(current_vertex, next_vertex))
 	{
-		white_neighbor->set_color(Color::GRAY);
-		circuit.push_back(*white_neighbor);
-		current_vertex = *white_neighbor;
+		circuit.push_back(next_vertex);
+		current_vertex = next_vertex;
 	}
 	return circuit;
 }

@@ -12,13 +12,13 @@ private:
 	int m_in_degree = 0, m_out_degree = 0, m_degree = 0;
 	int m_value;
 	Color m_color = Color::WHITE;
-	list<vertex*> m_neighbors; // change to by value.
+	list<vertex> m_neighbors; // change to by value.
 public:
 	vertex(int i_value = 0) { m_value = i_value; }
 	~vertex() = default;
 	void add_neighbor(vertex& i_neighbor);
 	bool neighbor_exists(const vertex& i_neighbor) const;
-	list<vertex*>& get_neighbors() { return m_neighbors; }
+	list<vertex>& get_neighbors() { return m_neighbors; }
 	int get_value()const { return m_value; }
 	void set_value(int i_value) { m_value = i_value; }
 	bool operator==(const vertex& i_other)const { return i_other.m_value == m_value; }

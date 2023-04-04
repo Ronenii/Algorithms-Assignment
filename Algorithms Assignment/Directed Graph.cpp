@@ -36,7 +36,7 @@ directed_graph & directed_graph::get_transposed()
 		dst = v;
 		for(auto neighbor: v.get_neighbors())
 		{
-			src = *neighbor;
+			src = neighbor;
 			transposed->set_edge(src,dst);
 		}
 	}
@@ -59,5 +59,10 @@ bool directed_graph::all_degrees_equal()
 		}
 	}
 
+	return true;
+}
+
+bool directed_graph::is_directed()
+{
 	return true;
 }

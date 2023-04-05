@@ -15,5 +15,5 @@ public:
 	static void get_char_input(char& input);
 	static void get_edge_input(int& src, int& dst, int num_of_vertexes);
 	static void get_vertexes_and_edges_input(int& vertexes, int& edges);
-	static void print_euler_circuit(list<vertex>& i_euler_circuit);
+	static void print_euler_circuit(list<vertex*> i_euler_circuit);
 };

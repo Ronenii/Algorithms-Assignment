@@ -2,7 +2,7 @@
 
 void io_manager::run_program()
 {
-	list<vertex> euler_circuit;
+	list<vertex*> euler_circuit;
 	graph* input_graph;
 	input_graph = get_user_input();
 	get_graph_input(input_graph);
@@ -70,12 +70,12 @@ void io_manager::get_vertexes_and_edges_input(int& vertexes, int& edges)
 		throw invalid_input_exception();
 }
 
-void io_manager::print_euler_circuit(list<vertex>& i_euler_circuit)
+void io_manager::print_euler_circuit(list<vertex*> i_euler_circuit)
 {
 	cout << '(';
 	for (auto& vertex : i_euler_circuit)
 	{
-		cout << vertex.get_value() << ',';
+		cout << vertex->get_value() << ',';
 	}
 	cout << ')' << endl;
 	

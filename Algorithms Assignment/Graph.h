@@ -23,15 +23,15 @@ public:
 	void visit(vertex& i_vertex);
 	void set_all_white();
 	bool is_all_black();
-	vector<vertex> find_circuit(vertex& i_vertex);
-	bool is_unsused_edge(vertex& i_current_vertex, vertex& i_white_neighbor);
+	vector<vertex*> find_circuit(int i_value);
+	bool is_unsused_edge(vertex i_current_vertex, list<vertex>& i_neighbors_list, vertex& o_next_neighbor);
 	virtual bool is_euler() = 0;
-	list<vertex>& get_euler_circuit();
+	list<vertex*> get_euler_circuit();
 	bool has_usused_egde(vertex& i_vertex);
-	void paste_circuit(vector<vertex>& i_dst, vector<vertex>& i_src, int i_start_index);
-	void change_edeges_to_used(vertex& i_current_vertex, vertex& neighbor);
+	void paste_circuit(vector<vertex*>& i_dst, vector<vertex*>& i_src, int i_start_index);
+	void change_edeges_to_used(int i_current_vertex_value, vertex& neighbor);
 	virtual bool is_directed() = 0;
 
-
+	vertex* mashu(list<vertex>* ref_neighbors_list, int current_vertex_value, bool& o_flag);
 	
 };

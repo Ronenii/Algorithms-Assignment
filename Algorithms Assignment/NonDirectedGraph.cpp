@@ -1,4 +1,4 @@
-#include "Non Directed Graph.h"
+#include "NonDirectedGraph.h"
 
 void non_directed_graph::set_edge(vertex& i_src, vertex& i_dst)
 {
@@ -14,9 +14,14 @@ bool non_directed_graph::is_euler()
 		return false;
 
 	set_all_white();
-	visit(get_vertex_by_value(1));
-	if (is_all_black())
+	graph* dummy_graph = get_dummy_graph();
+	dummy_graph->visit(dummy_graph->get_vertex_by_value(1));
+	if (dummy_graph->is_all_black())
+	{
+		delete(dummy_graph);
 		return true;
+	}
+	delete(dummy_graph);
 	return false;
 }
 
@@ -33,6 +38,12 @@ bool non_directed_graph::is_even_degrees()
 bool non_directed_graph::is_directed()
 {
 	return false;
+}
+
+graph* non_directed_graph::get_dummy_graph()
+{
+	graph* dummy_graph = new non_directed_graph(*this);
+	return dummy_graph;
 }
 
 

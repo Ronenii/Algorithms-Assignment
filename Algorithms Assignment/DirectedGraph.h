@@ -9,8 +9,9 @@ public:
 	~directed_graph() = default;
 	virtual void set_edge(vertex& i_src, vertex& i_dst) override;
 	bool is_grpah_strongly_connected();
-	directed_graph & get_transposed();
+	directed_graph* get_transposed();
 	virtual bool is_euler() override;
 	bool all_degrees_equal();
 	virtual bool is_directed();
+	virtual graph* get_dummy_graph();
 };

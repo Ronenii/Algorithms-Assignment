@@ -11,4 +11,5 @@ public:
 	virtual bool is_euler() override;
 	bool is_even_degrees();
 	virtual bool is_directed();
+	virtual graph* get_dummy_graph();
 };

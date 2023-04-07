@@ -18,16 +18,16 @@
     <ClInclude Include="Graph.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Directed Graph.h">
+    <ClInclude Include="DirectedGraph.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Non Directed Graph.h">
+    <ClInclude Include="NonDirectedGraph.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Vertex.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="IO Manager.h">
+    <ClInclude Include="IO_Manager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Exceptions.h">
@@ -41,16 +41,16 @@
     <ClCompile Include="Graph.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Directed Graph.cpp">
+    <ClCompile Include="DirectedGraph.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Non Directed Graph.cpp">
+    <ClCompile Include="NonDirectedGraph.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Vertex.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="IO Manager.cpp">
+    <ClCompile Include="IO_Manager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

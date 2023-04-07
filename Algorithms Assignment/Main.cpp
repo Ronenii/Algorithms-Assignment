@@ -1,6 +1,7 @@
-#include "IO Manager.h"
+#include "IO_Manager.h"
 
-void main()
+int main()
 {
 	io_manager::run_program();
+	return 0;
 }

@@ -21,3 +21,8 @@ bool vertex::neighbor_exists(const vertex& i_neighbor) const
 	return false;
 }
 
+bool vertex::has_neighbors()
+{
+	return !m_neighbors.empty();
+}
+

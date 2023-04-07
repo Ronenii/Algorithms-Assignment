@@ -27,7 +27,8 @@ public:
 	int get_in_degree() const { return  m_in_degree; }
 	void set_in_degree(int i_in_degree) { m_in_degree = i_in_degree; }
 	int get_out_degree() const { return  m_out_degree; }
-	void set_out_degree(int i_out_degree) { m_in_degree = i_out_degree; }
+	void set_out_degree(int i_out_degree) { m_out_degree = i_out_degree; }
 	void set_color(Color i_color) { m_color = i_color; }
 	Color get_color() const { return m_color; }
+	bool has_neighbors();
 };

@@ -139,19 +139,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Directed Graph.h" />
+    <ClInclude Include="DirectedGraph.h" />
     <ClInclude Include="Exceptions.h" />
     <ClInclude Include="Graph.h" />
-    <ClInclude Include="IO Manager.h" />
-    <ClInclude Include="Non Directed Graph.h" />
+    <ClInclude Include="IO_Manager.h" />
+    <ClInclude Include="NonDirectedGraph.h" />
     <ClInclude Include="Vertex.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Directed Graph.cpp" />
+    <ClCompile Include="DirectedGraph.cpp" />
     <ClCompile Include="Graph.cpp" />
-    <ClCompile Include="IO Manager.cpp" />
+    <ClCompile Include="IO_Manager.cpp" />
     <ClCompile Include="Main.cpp" />
-    <ClCompile Include="Non Directed Graph.cpp" />
+    <ClCompile Include="NonDirectedGraph.cpp" />
     <ClCompile Include="Vertex.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

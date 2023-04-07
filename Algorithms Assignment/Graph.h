@@ -20,18 +20,19 @@ public:
 	virtual void set_num_of_edges(const int i_num_of_edges) { m_num_of_edges = i_num_of_edges; }
 	virtual vertex& get_vertex_by_value(int i_value) { return m_vertexes[i_value - 1]; }
 	virtual void set_edge(vertex& i_src, vertex& i_dst) = 0;
+
 	void visit(vertex& i_vertex);
 	void set_all_white();
 	bool is_all_black();
-	vector<vertex*> find_circuit(int i_value);
-	bool is_unsused_edge(vertex i_current_vertex, list<vertex>& i_neighbors_list, vertex& o_next_neighbor);
-	virtual bool is_euler() = 0;
-	list<vertex*> get_euler_circuit();
-	bool has_usused_egde(vertex& i_vertex);
-	void paste_circuit(vector<vertex*>& i_dst, vector<vertex*>& i_src, int i_start_index);
-	void change_edeges_to_used(int i_current_vertex_value, vertex& neighbor);
-	virtual bool is_directed() = 0;
+	list<vertex*> find_circuit(vertex& i_vertex);
+	void get_and_print_euler_circuit();
+	void paste_circuit(list<vertex*>& i_dst, list<vertex*>& i_src, int i_start_index);
+	vertex& get_vertex_from_circuit(list<vertex*>& i_circuit, int i_index);
+	void print_euler_circuit(list<vertex*>& i_circuit);
+	void mark_edge(vertex& i_current_vertex, vertex& i_neighbor_vertex);
+	void mark_edge_for_non_directed_graph(vertex& i_current_vertex, vertex& i_neighbor_vertex);
+	virtual graph* get_dummy_graph() = 0;
 
-	vertex* mashu(list<vertex>* ref_neighbors_list, int current_vertex_value, bool& o_flag);
-	
+	virtual bool is_euler() = 0;
+	virtual bool is_directed() = 0;
 };

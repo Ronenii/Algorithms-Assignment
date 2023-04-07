@@ -1,4 +1,4 @@
-#include "Directed Graph.h"
+#include "DirectedGraph.h"
 
 void directed_graph::set_edge(vertex& i_src, vertex& i_dst)
 {
@@ -10,22 +10,26 @@ void directed_graph::set_edge(vertex& i_src, vertex& i_dst)
 bool directed_graph::is_grpah_strongly_connected()
 {
 	set_all_white();
-    visit(get_vertex_by_value(1));
+	graph* dummy_graph = get_dummy_graph();
+	directed_graph* dg_transposed = dynamic_cast<directed_graph*>(dummy_graph)->get_transposed();
+    dummy_graph->visit(dummy_graph->get_vertex_by_value(1));
 
-	if(is_all_black())
+	if(dummy_graph->is_all_black())
 	{
-		directed_graph dg_transposed = get_transposed();
-		visit(dg_transposed.get_vertex_by_value(1));
-		if(dg_transposed.is_all_black())
+		dg_transposed->visit(dg_transposed->get_vertex_by_value(1));
+		if(dg_transposed->is_all_black())
 		{
+			delete(dummy_graph);
+			delete(dg_transposed);
 			return true;
 		}
 	}
-	
+	delete(dummy_graph);
+	delete(dg_transposed);
 	return false;
 }
 
-directed_graph & directed_graph::get_transposed()
+directed_graph* directed_graph::get_transposed()
 {
 	directed_graph * transposed = new directed_graph(m_num_of_vertexes, m_num_of_edges);
 	vertex src;
@@ -33,15 +37,15 @@ directed_graph & directed_graph::get_transposed()
 
     for(auto v: m_vertexes)
 	{
-		dst = v;
+		vertex& dst = transposed->get_vertex_by_value(v.get_value());
 		for(auto neighbor: v.get_neighbors())
 		{
-			src = neighbor;
+			vertex& src = transposed->get_vertex_by_value(neighbor.get_value());
 			transposed->set_edge(src,dst);
 		}
 	}
 
-	return *transposed;
+	return transposed;
 }
 
 bool directed_graph::is_euler()
@@ -65,4 +69,10 @@ bool directed_graph::all_degrees_equal()
 bool directed_graph::is_directed()
 {
 	return true;
+}
+
+graph* directed_graph::get_dummy_graph()
+{
+	graph* dummy_graph = new directed_graph(*this);
+	return dummy_graph;
 }

@@ -16,8 +16,8 @@ void io_manager::run_program()
 	{
 		cout << "Graph is not aulerian" << endl;
 	}
-	// free allocation.
-
+	
+	delete input_graph;
 }
 
 

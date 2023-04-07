@@ -12,7 +12,7 @@ protected:
 public:
 	graph(int i_num_of_vertexes, int i_num_of_edges);
 	virtual ~graph() = default;
-	bool is_vertex_exists(vertex& i_vertex) const;
+	bool does_vertex_exist(vertex& i_vertex) const;
 	virtual vector<vertex> get_vertexes() const { return m_vertexes; }
 	virtual int get_num_of_vertexes() const { return m_num_of_vertexes; }
 	virtual int get_num_of_edges() const { return m_num_of_edges; }
@@ -25,12 +25,9 @@ public:
 	void set_all_white();
 	bool is_all_black();
 	list<vertex*> find_circuit(vertex& i_vertex);
-	void get_and_print_euler_circuit();
 	void paste_circuit(list<vertex*>& i_dst, list<vertex*>& i_src, int i_start_index);
 	vertex& get_vertex_from_circuit(list<vertex*>& i_circuit, int i_index);
-	void print_euler_circuit(list<vertex*>& i_circuit);
-	void mark_edge(vertex& i_current_vertex, vertex& i_neighbor_vertex);
-	void mark_edge_for_non_directed_graph(vertex& i_current_vertex, vertex& i_neighbor_vertex);
+	virtual void mark_edge(vertex& i_current_vertex, vertex& i_neighbor_vertex) = 0;
 	virtual graph* get_dummy_graph() = 0;
 
 	virtual bool is_euler() = 0;

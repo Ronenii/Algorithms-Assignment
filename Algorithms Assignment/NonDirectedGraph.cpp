@@ -25,6 +25,12 @@ bool non_directed_graph::is_euler()
 	return false;
 }
 
+void non_directed_graph::mark_edge(vertex& i_current_vertex, vertex& i_neighbor_vertex)
+{
+	i_current_vertex.get_neighbors().remove(i_neighbor_vertex);
+	i_neighbor_vertex.get_neighbors().remove(i_current_vertex);
+}
+
 bool non_directed_graph::is_even_degrees()
 {
 	for (auto& vertex : m_vertexes)

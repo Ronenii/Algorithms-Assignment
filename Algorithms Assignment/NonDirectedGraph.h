@@ -9,6 +9,7 @@ public:
 	~non_directed_graph() = default;
 	virtual void set_edge(vertex& i_src, vertex& i_dst) override;
 	virtual bool is_euler() override;
+	virtual void mark_edge(vertex& i_current_vertex, vertex& i_neighbor_vertex) override;
 	bool is_even_degrees();
 	virtual bool is_directed();
 	virtual graph* get_dummy_graph();

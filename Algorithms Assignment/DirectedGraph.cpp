@@ -29,6 +29,13 @@ bool directed_graph::is_grpah_strongly_connected()
 	return false;
 }
 
+// We remove the neighbor so that we cant come back and visit it.
+void directed_graph::mark_edge(vertex& i_current_vertex, vertex& i_neighbor_vertex)
+{
+	i_current_vertex.get_neighbors().remove(i_neighbor_vertex);
+
+}
+
 directed_graph* directed_graph::get_transposed()
 {
 	directed_graph * transposed = new directed_graph(m_num_of_vertexes, m_num_of_edges);

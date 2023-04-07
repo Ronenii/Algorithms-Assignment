@@ -12,6 +12,7 @@ public:
 	directed_graph* get_transposed();
 	virtual bool is_euler() override;
 	bool all_degrees_equal();
-	virtual bool is_directed();
-	virtual graph* get_dummy_graph();
+	virtual bool is_directed() override;
+	virtual void mark_edge(vertex& i_current_vertex, vertex& i_neighbor_vertex) override;
+	virtual graph* get_dummy_graph() override;
 };
